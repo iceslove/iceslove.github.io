@@ -1,0 +1,152 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="知识管理，时间管理，自我管理，阅读，语音写作，思维导图，Wiz，TimeMeter"><title>Linux 系统操作（一） | 起今知行 | 一页书</title><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/4.2.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Linux 系统操作（一）</h1><a id="logo" href="/.">起今知行 | 一页书</a><p class="description">自我管理，知识管理，时间管理，阅读，语音写作，思维导图，Wiz，TimeMeter</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Linux 系统操作（一）</h1><div class="post-meta">Nov 16, 2016<script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="post-content"><p><img style="width:200px;height:60px" src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=51553588,3796425299&fm=58"></p>
+<pre><code>$ useradd –d /usr/sam -m sam
+  此命令创建了一个用户sam，其中-d和-m选项用来为登录名sam产生一个主目录/usr/sam（/usr为默认的用户主目录所在的父目录）。
+
+  假设当前用户是sam，则下面的命令修改该用户自己的口令：
+
+$ passwd
+
+  Old password:******
+
+  New password:*******
+
+  Re-enter new password:*******
+
+  如果是超级用户，可以用下列形式指定任何用户的口令：
+
+  # passwd sam
+
+  New password:*******
+
+  Re-enter new password:*******
+</code></pre><p>###参考<br>1、添加用户</p>
+<pre><code>首先用adduser命令添加一个普通用户，命令如下：
+#### $ adduser tommy  //添加一个名为tommy的用户
+#### $ passwd tommy   //修改密码
+
+
+Changing password for user tommy.&lt;br/&gt;
+New UNIX password:     //在这里输入新密码&lt;br/&gt;
+Retype new UNIX password:  //再次输入新密码&lt;br/&gt;
+passwd: all authentication tokens updatedsuccessfully.&lt;br/&gt;
+</code></pre><p>2、赋予root权限</p>
+<pre><code>方法一：修改 /etc/sudoers 文件，找到下面一行，把前面的注释（#）去掉
+## Allows people in group wheel to run all commands
+%wheel    ALL=(ALL)    ALL
+然后修改用户，使其属于root组（wheel），命令如下：
+#usermod -g root tommy
+修改完毕，现在可以用tommy帐号登录，然后用命令 su - ，即可获得root权限进行操作。
+方法二：修改 /etc/sudoers 文件，找到下面一行，在root下面添加一行，如下所示：
+## Allow root to run any commands anywhere
+root    ALL=(ALL)     ALL
+tommy   ALL=(ALL)     ALL
+修改完毕，现在可以用tommy帐号登录，然后用命令 su - ，即可获得root权限进行操作。
+</code></pre><p>####3、linux下添加，删除，修改，查看用户和用户组</p>
+<p>3.1 创建组</p>
+<pre><code>groupadd test
+
+增加一个test组
+</code></pre><p>3.2 修改组</p>
+<pre><code>groupmod -n test2 test
+
+将test组的名子改成test2
+</code></pre><p>3，删除组</p>
+<pre><code>groupdel test2
+
+删除 组test2
+</code></pre><p>4，查看组</p>
+<pre><code>a）查看当前登录用户所在的组 groups，查看apacheuser所在组groups apacheuser
+
+b）查看所有组 cat /etc/group
+
+c）有的linux系统没有/etc/group文件的，这个时候看下面的这个方法
+
+cat /etc/passwd |awk -F [:] ‘{print $4}’ |sort|uniq | getent group |awk -F [:] ‘{print $1}’
+
+这里用到一个命令是getent,可以通过组ID来查找组信息,如果这个命令没有的话,那就很难查找,系统中所有的组了.
+</code></pre><p>####4、用户操作</p>
+<p>4.1 增加用户</p>
+<pre><code>[root@krlcgcms01 mytest]# useradd –help
+
+Usage: useradd [options] LOGIN
+
+Options:
+
+-b, –base-dir BASE_DIR       设置基本路径作为用户的登录目录
+
+-c, –comment COMMENT         对用户的注释
+
+-d, –home-dir HOME_DIR       设置用户的登录目录
+
+-D, –defaults                改变设置
+
+-e, –expiredate EXPIRE_DATE 设置用户的有效期
+
+-f, –inactive INACTIVE       用户过期后，让密码无效
+
+-g, –gid GROUP               使用户只属于某个组
+
+-G, –groups GROUPS           使用户加入某个组
+
+-h, –help                    帮助
+
+-k, –skel SKEL_DIR           指定其他的skel目录
+
+-K, –key KEY=VALUE           覆盖 /etc/login.defs 配置文件
+
+-m, –create-home             自动创建登录目录
+
+-l,                           不把用户加入到lastlog文件中
+
+-M,                           不自动创建登录目录
+
+-r,                           建立系统账号
+
+-o, –non-unique              允许用户拥有相同的UID
+
+-p, –password PASSWORD       为新用户使用加密密码
+
+-s, –shell SHELL             登录时候的shell
+
+-u, –uid UID                 为新用户指定一个UID
+
+-Z, –selinux-user SEUSER     use a specific SEUSER for the SELinux user mapping
+
+passwd test
+
+增加用户test，有一点要注意的，useradd增加一个用户后，不要忘了给他设置密码，不然不能登录的。
+</code></pre><p>4.2 修改用户</p>
+<pre><code>usermod -d /home/test -G test2 test
+
+将test用户的登录目录改成/home/test，并加入test2组，注意这里是大G。
+
+gpasswd -a test test2 将用户test加入到test2组
+
+gpasswd -d test test2 将用户test从test2组中移出
+</code></pre><p>4.3 删除用户</p>
+<pre><code>userdel test
+
+将test用户删除
+</code></pre><p>4.4 查看用户</p>
+<pre><code>a）查看当前登录用户
+
+[root@krlcgcms01 ~]# w
+
+[root@krlcgcms01 ~]# who
+
+b）查看自己的用户名
+
+[root@krlcgcms01 ~]# whoami
+
+c）查看单个用户信息
+
+[root@krlcgcms01 ~]# finger apacheuser
+
+[root@krlcgcms01 ~]# id apacheuser
+
+d）查看用户登录记录
+
+[root@krlcgcms01 ~]# last 查看登录成功的用户记录
+
+[root@krlcgcms01 ~]# lastb 查看登录不成功的用户记录     
+</code></pre></div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://yoursite.com/2016/11/16/l_user/" data-id="civkpiwtm0000dd019y7h0017" class="article-share-link">分享到</a><div class="tags"><a href="/tags/Linux/">Linux</a></div><div class="post-nav"><a href="/2016/11/15/hello-world/" class="next">Hello World</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="http://yoursite.com"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Linux/" style="font-size: 15px;">Linux</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/11/16/l_user/">Linux 系统操作（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/hello-world/">Hello World</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.baidu.com" title="百度" target="_blank">百度</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">起今知行 | 一页书.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
