@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="知识管理，时间管理，自我管理，阅读，语音写作，思维导图，Wiz，TimeMeter"><title>hexo 3.0 静态博客使用指南(二) | 起今知行 | 一页书</title><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/4.2.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">hexo 3.0 静态博客使用指南(二)</h1><a id="logo" href="/.">起今知行 | 一页书</a><p class="description">自我管理，知识管理，时间管理，阅读，语音写作，思维导图，Wiz，TimeMeter</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/onlinePlay/"><i class="fa fa-video-camera"> 直播</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">hexo 3.0 静态博客使用指南(二)</h1><div class="post-meta">Jun 9, 2017<script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="post-content"><p>配置Hexo</p>
+<p>Hexo全局配置</p>
+<p>用文本编辑器修改_config.yml这个文件 大致如下 只需要自行修改几个 其他保持默认即可</p>
+<p>通常需要修改站点名称 /URL格式 /归档设置 /disqus评论用户名 /部署配置 这几项就可以了 注意冒号后面都要添加一个半角空格 之后才是设置参数</p>
+<p>自定义域名设置 在 source 我文件夹下面新建 CNAME 文件 里面写入你的自定义域名 并设置您的dns配置cname方式到服务提供商的给的地址即可</p>
+<p>网站</p>
+<p>参数 描述</p>
+<p>title 网站标题</p>
+<p>subtitle 网站副标题</p>
+<p>description 网站描述</p>
+<p>author 您的名字</p>
+<p>language 网站使用的语言</p>
+<p>timezone 网站时区。Hexo 预设使用您电脑的时区。时区列表</p>
+<p>网址</p>
+<p>参数 描述 默认值</p>
+<p>url 网址</p>
+<p>root 网站根目录</p>
+<p>permalink 文章的 永久链接 格式 :year/:month/:day/:title/</p>
+<p>permalink_default 永久链接中各部分的默认值</p>
+<p>网站存放在子目录</p>
+<p>如果您的网站存放在子目录中，例如 <a href="http://yoursite.com/blog，则请将您的">http://yoursite.com/blog，则请将您的</a> url 设为 <a href="http://yoursite.com/blog">http://yoursite.com/blog</a> 并把 root 设为 /blog/。</p>
+<p>目录</p>
+<p>参数 描述 默认值</p>
+<p>source_dir 资源文件夹，这个文件夹用来存放内容。 source</p>
+<p>public_dir 公共文件夹，这个文件夹用于存放生成的站点文件。 public</p>
+<p>tag_dir 标签文件夹 tags</p>
+<p>archive_dir 归档文件夹 archives</p>
+<p>category_dir 分类文件夹 categories</p>
+<p>code_dir Include code 文件夹 downloads/code</p>
+<p>i18n_dir 国际化（i18n）文件夹 :lang</p>
+<p>skip_render 跳过指定文件的渲染，您可使用 glob 来配置路径。</p>
+<p>文章</p>
+<p>参数 描述 默认值</p>
+<p>new_post_name 新文章的文件名称 :title.md</p>
+<p>default_layout 预设布局 post</p>
+<p>auto_spacing 在中文和英文之间加入空格 false</p>
+<p>titlecase 把标题转换为 title case false</p>
+<p>external_link 在新标签中打开链接 true</p>
+<p>filename_case 把文件名称转换为 (1) 小写或 (2) 大写 0</p>
+<p>render_drafts 显示草稿 false</p>
+<p>post_asset_folder 启动 Asset 文件夹 false</p>
+<p>relative_link 把链接改为与根目录的相对位址 false</p>
+<p>future 显示未来的文章 true</p>
+<p>highlight 代码块的设置</p>
+<p>分类 &amp; 标签</p>
+<p>参数 描述 默认值</p>
+<p>default_category 默认分类 uncategorized</p>
+<p>category_map 分类别名</p>
+<p>tag_map 标签别名</p>
+<p>日期 / 时间格式</p>
+<p>Hexo 使用 Moment.js 来解析和显示时间。</p>
+<p>参数 描述 默认值</p>
+<p>date_format 日期格式 MMM D YYYY</p>
+<p>time_format 时间格式 H:mm:ss</p>
+<p>分页</p>
+<p>参数 描述 默认值</p>
+<p>per_page 每页显示的文章量 (0 = 关闭分页功能) 10</p>
+<p>pagination_dir 分页目录 page</p>
+<p>扩展</p>
+<p>参数 描述</p>
+<p>theme 当前主题名称</p>
+<p>deploy 部署</p>
+<p>Hexo常用插件安装与配置</p>
+<p>安装首页文章数量 存档 分类 的插件</p>
+<p>安装本地服务器代理插件</p>
+<p>安装发布器插件</p>
+<p>安装更新插件 rss site-map之类的</p>
+<p>npm install hexo-generator-index –save<br>npm install hexo-generator-archive –save<br>npm install hexo-generator-category –save<br>npm install hexo-generator-tag –save<br>npm install hexo-server –save<br>npm install hexo-deployer-git –save<br>npm install hexo-deployer-heroku –save<br>npm install hexo-deployer-rsync –save<br>npm install hexo-deployer-openshift –save<br>npm install hexo-renderer-marked@0.2 –save<br>npm install hexo-renderer-stylus@0.2 –save<br>npm install hexo-generator-feed@1 –save<br>npm install hexo-generator-sitemap@1 –save</p>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://yoursite.com/2017/06/09/art20170608/" data-id="cj3ppcz1x0002mk6g2nduoi5o" class="article-share-link">分享到</a><div class="tags"></div><div class="post-nav"><a href="/2017/06/09/art201706081/" class="pre">hexo 3.0 静态博客使用指南(三)</a><a href="/2017/06/09/art20170609/" class="next">云影  一款好用的越狱vpn</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="http://yoursite.com"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Linux/" style="font-size: 15px;">Linux</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/art201706082/">hexo 3.0 静态博客使用指南(四)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/art201706081/">hexo 3.0 静态博客使用指南(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/art20170608/">hexo 3.0 静态博客使用指南(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/art20170609/">云影  一款好用的越狱vpn</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/art20170608-md/">hexo 3.0 静态博客使用指南(-)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/l-user4/">spring boot 服务化服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/l-user3/">Linux下安装maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/18/l-linux2/">Hexo Markdown 语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/16/l_user/">Linux 系统操作（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/15/hello-world/">Hello World</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.baidu.com" title="百度" target="_blank">百度</a><ul></ul><a href="http://blog.wujcool.com/" title="J" target="_blank">J</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">起今知行 | 一页书.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
